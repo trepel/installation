@@ -10,6 +10,13 @@
   
 - name: Print user id
   debug: msg="{{ id.stdout }}"
+  
+- name Store oc username
+  shell: oc whoami
+  register: oc-whoami
+  
+- name Print oc username
+  debug: msg="{{ oc-whoami.stdout }}"
 
 - name: Create {{ nexus_namespace }} namespace
   shell: oc new-project {{ nexus_namespace }}
