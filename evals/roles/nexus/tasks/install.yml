@@ -11,11 +11,18 @@
 - name: Print user id
   debug: msg="{{ id.stdout }}"
   
+- name: Store hostname
+  shell: hostname
+  register: hostname
+  
+- name: Print hostname
+  debug: msg="{{ hostname.stdout }}"
+  
 - name: Play with files
   shell: ls -lha /root/.kube/config; ls -lha ~/.kube/config
   register: kube-config
   
-- name: Pring files
+- name: Print files
   debug: msg="{{ kube-config.stdout }}"
   
 - name: Store oc username
