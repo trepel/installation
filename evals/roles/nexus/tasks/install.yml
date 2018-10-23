@@ -3,6 +3,13 @@
   shell: oc get namespace {{ nexus_namespace }}
   failed_when: false
   register: nexus_check_namespace_exists
+  
+- name: Store user id
+  shell: id
+  register: id
+  
+- name: Print user id
+  debug: msg="{{ id.stdout }}"
 
 - name: Create {{ nexus_namespace }} namespace
   shell: oc new-project {{ nexus_namespace }}
