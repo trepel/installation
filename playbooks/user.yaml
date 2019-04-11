@@ -42,7 +42,7 @@
         # after a installation has been run successfully once, we will have no htpasswd auth anymore so need to login as the admin via rhsso
       - block:
           - name: get password for admin user
-            script: "../../scripts/get_admin_secret.sh"
+            script: "../scripts/get_admin_secret.sh"
             register: admin_password
             failed_when: admin_password.rc != 0
           - name: login with admin user via rhsso identity provider when htpasswd disabled
